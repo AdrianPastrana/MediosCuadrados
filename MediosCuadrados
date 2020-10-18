@@ -1,0 +1,32 @@
+package medioscuadrados;
+import java.util.Scanner;
+public class MediosCuadrados 
+{
+    public static void main(String[] args) 
+    {
+        Scanner entrada = new Scanner(System.in);
+        String cadena, numerocuadrado, digmed;
+        int tam1, tam2, primerc;
+        double londig; 
+        long londigcuadrado;
+        System.out.println("Escriba semilla: ");
+        cadena = entrada.next();
+        tam1 = cadena.length();  //toma los caracteres de la cadena 
+        //System.out.println("Cantidad de digitos:  " + tam1);       
+        londig = Integer.parseInt(cadena);//conversion de la cadena a numero entero
+        //System.out.println("Y"+"=  "+ cadena +" == " + numerocuadrado + "  x1="+ digmed +" r1= 0."+digmed); 
+        String t=cadena;
+        for (int i=0; i<=25; i++)//para los 4 ciclos
+        {
+            londigcuadrado = (long)Math.pow(londig,2);//elevacion de la cadena ^2
+            numerocuadrado = Long.toString(londigcuadrado);//convierte el valor^2 a caracter
+            tam2 = numerocuadrado.length();//total de caracteres de la cadena
+            primerc = (tam2-tam1) / 2;//calcula el caracter extraido
+            digmed = numerocuadrado.substring(primerc,primerc+tam1);//extrae los 4 caracter
+            londig = Integer.parseInt(digmed);//conversion del numero y se repite con este mismo.
+            double v = londig/10000;
+            System.out.println("Y"+i+" = ("+t+ ")^2 == " +numerocuadrado+" x= "+digmed+" r="+v);
+            t=digmed;
+        }
+    }
+}
